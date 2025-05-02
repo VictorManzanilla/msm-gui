@@ -1,4 +1,21 @@
 class DirectorsController < ApplicationController
+
+  def create
+    # Parameters: {"name"=>"victor", "dob"=>"2025-05-01", "bio"=>" HELLO", "image"=>"no image"}
+
+    d = Director.new
+    d.name = params.fetch("name")
+    d.dob = params.fetch("dob")
+    d.bio = params.fetch("bio")
+    d.image = params.fetch("image")
+
+    d.save
+
+    redirect_to("/directors")
+
+  end 
+
+
   def index
     matching_directors = Director.all
     @list_of_directors = matching_directors.order({ :created_at => :desc })
