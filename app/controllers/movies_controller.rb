@@ -32,6 +32,28 @@ class MoviesController < ApplicationController
 
   end 
 
+  def update
+    #get the ID from params
+    the_id = params.fetch("an_id")
+
+    #look up existing record
+    matching_id = Movie.where({:id => the_id})
+    #get an instance of a Movie
+    movie_details = matching_id.at(0)
+    #update columns with the values from user input
+    movie_details.title = params.fetch("title")
+    movie_details.year = params.fetch("year")
+    movie_details.duration = params.fetch("duration")
+    movie_details.description = params.fetch("description")
+    movie_details.image = params.fetch("image")
+    movie_details.director_id = params.fetch("director_id")
+
+    #save
+    movie_details.save
+    #redirect to show movie, we use string interpolation because this is ruby file
+    redirect_to("/movies/#{movie_details.id}")
+  end
+
   def destroy
     # Parameters: {"an_id"=>"72"}
       the_id = params.fetch("an_id")
