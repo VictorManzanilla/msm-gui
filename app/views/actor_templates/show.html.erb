@@ -6,6 +6,32 @@
   Go back
 </a>
 
+<form action="/update_actor/<%=@the_actor.id%>" method="post">
+  <div>
+    <label for="name_field"> Name </label>
+      <input id="name_field" type="text" name="name" value="<%=@the_actor.name%>" >
+  </div>
+
+ <div>
+    <label for="dob_field"> Dob </label>
+      <input id="dob_field" type="date" name="dob" value="<%=@the_actor.dob%>">
+  </div>
+
+   <div>
+    <label for="bio_field"> Bio </label>
+      <textarea id="bio_field" type="text" name="bio" value="<%=@the_actor.bio%>" > </textarea>
+  </div>
+
+   <div>
+    <label for="image_field"> Image </label>
+      <input id="image_field" type="text" name="image" value="<%=@the_actor.image%>">
+  </div>
+
+  <button> Update actor </button>
+
+</form>
+
+
 <hr>
 
 <dl>
